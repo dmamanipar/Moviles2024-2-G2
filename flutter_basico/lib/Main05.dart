@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basico/Main04.dart';
 void main() {
   runApp( MyApp());
 }
@@ -41,28 +42,30 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Lista de Usuarios")),
-      body: ListView.builder(
-        padding: EdgeInsets.all(16.0),
+      appBar: AppBar(title: Text('GridView de Usuarios')),
+      body: GridView.builder(
+        padding: const EdgeInsets.all(16.0),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3, // Número de columnas
+          childAspectRatio: 1, // Relación de aspecto de los elementos
+        ),
         itemCount: usuarios.length, // Número total de usuarios
         itemBuilder: (context, index) {
           final usuario = usuarios[index]; // Obtiene el usuario correspondiente
           return Container(
-            margin: EdgeInsets.only(bottom: 16.0), // Espacio entre elementos
+            margin: EdgeInsets.all(8.0), // Espacio entre celdas
             color: Colors.blueAccent,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
+            child: Center(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start, // Alinea el texto a la izquierda
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text( usuario.nombre,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
+                  Text(
+                    usuario.nombre,
+                    style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 8),
-                  Text( 'Edad: ${usuario.edad}',
+                  Text(
+                    'Edad: ${usuario.edad}',
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ],
@@ -78,26 +81,24 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('ListView')),
-        body: ListView(
-          padding: EdgeInsets.all(16.0),
-          children: <Widget>[
-            Container(color: Colors.red, height: 100),
-            Container(color: Colors.green, height: 100),
-            Container(color: Colors.blue, height: 100),
-            Container(color: Colors.orange, height: 100),
-            Container(color: Colors.purple, height: 100),
-          ],
+        appBar: AppBar(title: Text('GridView')),
+        body: GridView.count(
+          crossAxisCount: 3,
+          padding: const EdgeInsets.all(16.0),
+          children: List.generate(40, (index) {
+            return Container(
+              margin: EdgeInsets.all(8.0),
+              color: Colors.blueAccent,
+              child: Center(
+                child: Text(
+                  'Item $index',
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
+              ),
+            );
+          }),
         ),
       ),
     );
   }*/
-
-
-}
-
-class Usuario {
-  final String nombre;
-  final int edad;
-  Usuario(this.nombre, this.edad);
 }
