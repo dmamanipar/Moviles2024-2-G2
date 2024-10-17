@@ -58,7 +58,50 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Estructura de App en Flutter'),
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: Column(
+          children: <Widget>[
+            Text(
+              '¡Hola, Flutter!',
+              style: TextStyle(fontSize: 24, color: Colors.blue),
+            ),
+            Text(
+              'Texto alineado y estilizado sdsdsdsd',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 2,
+                wordSpacing: 5,
+                color: Colors.purple,
+                backgroundColor: Colors.yellow,
+              ),
+            ),
+
+            RichText(
+              text: TextSpan(
+                text: 'Este es un ',
+                style: TextStyle(fontSize: 24, color: Colors.black),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'texto ',
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
+                  ),
+                  TextSpan(
+                    text: 'rico ',
+                    style: TextStyle(fontStyle: FontStyle.italic, color: Colors.green),
+                  ),
+                  TextSpan(
+                    text: 'en estilos.',
+                    style: TextStyle(decoration: TextDecoration.underline, color: Colors.red),
+                  ),
+                ],
+              ),
+            ),
+
+
+
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
